@@ -1,0 +1,262 @@
+MainLayout:
+
+<ScaleLabel@Label>:
+	_scale: 1. if self.texture_size[0] < self.width else float(self.width) / self.texture_size[0]
+	canvas.before:
+		PushMatrix
+		Scale:
+			origin: self.center
+			x: self._scale or 1.
+			y: self._scale or 1.
+	canvas.after:
+		PopMatrix
+
+
+<BackgroundColor@Widget>
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<BackgroundLabel2@Label+BackgroundColor>
+    background_color: 1, 1, 1
+
+<BackgroundLabel1@Label+BackgroundColor>
+    background_color: 1, 1, 1
+
+
+<MainLayout>:
+    orientation: "vertical"
+    padding: "2dp"
+    spacing: "5dp"
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BackgroundLabel2:
+        size_hint_y: None
+        height: "30dp"
+        font_name: "Lcd.ttf"
+        text: root.text
+        font_size: "20dp"
+        text_size: self.size
+        halign: 'right'
+        valign: 'middle'
+        padding_x: "10dp"
+        color: 0, 0, 0
+
+    BackgroundLabel1:
+        size_hint_y: None
+        height: "80dp"
+        font_name: "Lcd.ttf"
+        text: root.display_text
+        font_size: "60dp"
+        text_size: self.size
+        halign: 'right'
+        valign: 'middle'
+        padding_x: "10dp"
+        color: 0, 0, 0
+
+
+
+    GridLayout:
+        cols: 4
+        spacing: "2dp"
+        Button:
+            text: "+/-"
+            font_size: "25dp"
+            on_press: root.add_sign()
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "CE"
+            font_size: "25dp"
+            on_press: root.clear_all()
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "C"
+            font_size: "25dp"
+            on_press: root.clear()
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "<--"
+            font_size: "25dp"
+            on_press: root.backspace()
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "1"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "2"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "3"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "+"
+            font_size: "25dp"
+            on_press: root.mathematical_operation(self.text)
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "4"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "5"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "6"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "-"
+            font_size: "25dp"
+            on_press: root.mathematical_operation(self.text)
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "7"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "8"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "9"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "x"
+            font_size: "25dp"
+            on_press: root.mathematical_operation(self.text)
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "."
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "0"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "π"
+            font_size: "25dp"
+            on_press: root.add_pi()
+            background_normal: ''
+            background_color: .85, .85, .85, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "/"
+            font_size: "25dp"
+            on_press: root.mathematical_operation(self.text)
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "("
+            font_size: "25dp"
+            on_press: root.parenthesis()
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: ")"
+            font_size: "25dp"
+            on_press: root.on_button_click(self.text)
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "^"
+            font_size: "25dp"
+            on_press: root.mathematical_operation(self.text)
+            background_normal: ''
+            background_color: .66, .66, .66, 1
+            color: 0, 0, 0
+
+        Button:
+            text: "="
+            font_size: "25dp"
+            on_press: root.compute()
+            background_normal: ''
+            background_color: .35, .58, .9, .8
+            color: 0, 0, 0
